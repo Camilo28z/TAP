@@ -54,16 +54,17 @@ if estrategia_sniper:
     puntuacion_total += 3
 
 # Mostrar el progreso de la puntuación
-progreso = min(max((puntuacion_total / puntuacion_maxima) * 100, 0), 100)
+progreso = min(max(puntuacion_total / puntuacion_maxima, 0), 1)  # Asegurar que el valor esté entre 0 y 1
 st.progress(progreso)
 
 # Sugerencia de acción basada en progresión
-st.write(f"Progreso: {progreso:.2f}%")
+st.write(f"Progreso: {progreso * 100:.2f}%")
 
-if progreso >= 75:
+if progreso >= 0.75:
     st.success("¡Alta probabilidad! Considera entrar en operación.")
-elif 50 <= progreso < 75:
+elif 0.50 <= progreso < 0.75:
     st.warning("Condiciones favorables, pero monitorea el mercado.")
 else:
     st.error("Condiciones no favorables. Espera más confirmaciones.")
+
 
