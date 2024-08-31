@@ -54,7 +54,7 @@ if estrategia_sniper:
     puntuacion_total += 3
 
 # Mostrar el progreso de la puntuación
-progreso = (puntuacion_total / puntuacion_maxima) * 100
+progreso = min(max((puntuacion_total / puntuacion_maxima) * 100, 0), 100)
 st.progress(progreso)
 
 # Sugerencia de acción basada en progresión
@@ -66,3 +66,4 @@ elif 50 <= progreso < 75:
     st.warning("Condiciones favorables, pero monitorea el mercado.")
 else:
     st.error("Condiciones no favorables. Espera más confirmaciones.")
+
